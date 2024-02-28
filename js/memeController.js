@@ -7,6 +7,13 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
+    renderCanvas()
+}
+
+function renderCanvas() {
+    gCtx.fillStyle = 'white'
+    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
+
     renderMeme()
 }
 
@@ -36,4 +43,9 @@ function drawText(text = 'Hello Meme Generator!', size, color) {
 
 	gCtx.fillText(text, x, y)
 	gCtx.strokeText(text, x, y)
+}
+
+function onTxtChange(newTxt){
+    setLineTxt(newTxt)
+    renderMeme()
 }

@@ -8,11 +8,15 @@ var gMeme = {
         {
             txt: 'I sometimes eat Falafel',
             size: 20,
-            color: 'red'
+            color: 'green'
         }
     ]
 }
 
 function getMeme() {
     return gMeme
+}
+
+function setLineTxt(newTxt) {
+    gMeme.lines[0].txt = newTxt
 }
