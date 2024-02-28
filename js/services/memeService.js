@@ -43,16 +43,32 @@ function getImgs() {
 
 function _createImgs() {
     gImgs = [
-        _createImg(),
-        _createImg()
+        _createImg(['funny', 'president', 'donald trump']),
+        _createImg(['cute', 'dog', 'animal']),
+        _createImg(['cute', 'baby', 'animal', 'dog']),
+        _createImg(['cute', 'cat', 'animal']),
+        _createImg(['happy', 'success', 'baby']),
+        _createImg(['funny']),
+        _createImg(['funny', 'baby', 'surprise']),
+        _createImg(['funny']),
+        _createImg(['funny', 'baby', 'laugh']),
+        _createImg(['happy', 'laugh', 'president', 'barack obama']),
+        _createImg(['wrestle', 'man']),
+        _createImg(['funny', 'haim hecht', 'point']),
+        _createImg(['cheers', 'leonardo dicaprio', 'happy']),
+        _createImg(['serious']),
+        _createImg(['serious', 'game of thrones', 'eddard stark']),
+        _createImg(['funny']),
+        _createImg(['serious', 'vladimir putin', 'president']),
+        _createImg(['movie', 'toy story']),
     ]
     return gImgs
 }
 
-function _createImg(id = gId++) {
+function _createImg(keywords = ['funny'], id = gId++,) {
     return {
         id,
         url: `img/${id}.jpg`,
-        keywords: ['funny', 'president']
+        keywords
     }
 }

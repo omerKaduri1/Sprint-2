@@ -28,7 +28,7 @@ function renderMeme() {
 
 function drawText(text = 'Hello Meme Generator!', size, color) {
     const x = gElCanvas.width / 2
-    const y = gElCanvas.height / 2
+    const y = gElCanvas.height / 6
 	gCtx.lineWidth = 2
 	gCtx.strokeStyle = color
 
