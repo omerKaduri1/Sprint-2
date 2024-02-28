@@ -1,0 +1,9 @@
+.main-header {
+    color: var(--primary-1);
+    background-color: var(--primary-base);
+}
+
+.logo img{
+    width: 8.125em;
+}
+
