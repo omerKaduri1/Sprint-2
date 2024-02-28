@@ -1,6 +1,6 @@
 'use strict'
 
-var gImgs 
+var gImgs
 var gId = 1
 var gMeme = {
     selectedImgId: 1,
@@ -22,6 +22,15 @@ function getMeme() {
 
 function setLineTxt(newTxt) {
     gMeme.lines[0].txt = newTxt
+}
+
+function setTxtColor(newColor) {
+    gMeme.lines[0].color = newColor
+}
+
+function setTxtSize(operator) {
+    if (operator === '+') gMeme.lines[0].size++
+    if (operator === '-') gMeme.lines[0].size--
 }
 
 function setImg(imgId) {

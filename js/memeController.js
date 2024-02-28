@@ -47,6 +47,16 @@ function onTxtChange(newTxt){
     renderMeme()
 }
 
+function onColorChange(newColor) {
+    setTxtColor(newColor)
+    renderMeme()
+}
+
+function onTxtSizeChange(operator) {
+    setTxtSize(operator)
+    renderMeme()
+}
+
 function downloadMeme(elLink) {
     elLink.download = 'my-meme'
     const dataUrl = gElCanvas.toDataURL()

@@ -25,7 +25,20 @@
         </section>
         <section class="editor">
             <div class="user-editor">
-                <input oninput="onTxtChange(this.value)" type="text" placeholder="Enter text">
+                <div class="text-editor">
+                    <input oninput="onTxtChange(this.value)" type="text" placeholder="Enter text">
+                </div>
+
+                <div class="advanced-editor">
+                    
+                    <button onclick="onTxtSizeChange(this.value)" value="+">increase</button>
+                    <button onclick="onTxtSizeChange(this.value)" value="-">decrease</button>
+                    <button>
+                        <label for="color" id="color">Pick a color
+                            <input oninput="onColorChange(this.value)" type="color" name="color" id="color">
+                        </label>
+                    </button>
+                </div>
             </div>
             <div class="canvas-container">
                 <canvas height="450" width="450"></canvas>
