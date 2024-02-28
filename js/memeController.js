@@ -7,12 +7,7 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
-    renderCanvas()
-}
-
-function renderCanvas() {
-    gCtx.fillStyle = 'white'
-    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
+    renderGallery()
 
     renderMeme()
 }
@@ -21,8 +16,8 @@ function renderMeme() {
     const meme = getMeme()
     const img = new Image()
     img.src = `img/${meme.selectedImgId}.jpg`
-    gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
     img.onload = () =>  {
+        gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         drawText(meme.lines[0].txt, meme.lines[0].size, meme.lines[0].color)
     }
