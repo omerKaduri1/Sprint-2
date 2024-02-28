@@ -18,31 +18,34 @@ function renderMeme() {
     const meme = getMeme()
     const img = new Image()
     img.src = `img/${meme.selectedImgId}.jpg`
-    img.onload = () =>  {
+    img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        drawText(meme.lines[0].txt, meme.lines[0].size, meme.lines[0].color)
+        let y = gElCanvas.height / 6
+        meme.lines.forEach(line => {
+            drawText(line.txt, line.size, line.color, y)
+            y = gElCanvas.height / 1.5
+        })
     }
-
 }
 
-function drawText(text = 'Hello Meme Generator!', size, color) {
-    const x = gElCanvas.width / 2
-    const y = gElCanvas.height / 6
-	gCtx.lineWidth = 2
-	gCtx.strokeStyle = color
+function drawText(text = 'Hello Meme Generator!', size, color, y) {
+    let x = gElCanvas.width / 2
+    // let y = gElCanvas.height / 6
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = color
 
-	// gCtx.fillStyle = 'whitesmoke'
+    // gCtx.fillStyle = 'whitesmoke'
 
-	gCtx.font = `${size}px Impact`
-	gCtx.textAlign = 'center'
-	// gCtx.textBaseline = 'middle'
+    gCtx.font = `${size}px Impact`
+    gCtx.textAlign = 'center'
+    gCtx.textBaseline = 'middle'
 
-	gCtx.fillText(text, x, y)
-	gCtx.strokeText(text, x, y)
+    gCtx.fillText(text, x, y)
+    gCtx.strokeText(text, x, y)
 }
 
-function onTxtChange(newTxt){
+function onTxtChange(newTxt) {
     setLineTxt(newTxt)
     renderMeme()
 }
@@ -54,6 +57,11 @@ function onColorChange(newColor) {
 
 function onTxtSizeChange(operator) {
     setTxtSize(operator)
+    renderMeme()
+}
+
+function onAddLine() {
+    addLine()
     renderMeme()
 }
 

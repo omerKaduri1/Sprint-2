@@ -14,7 +14,7 @@ function renderGallery() {
 function onImgSelect(imgId){
     const elGallery = document.querySelector('section.gallery')
     elGallery.style.display = 'none'
-    gElEditor.style.display = 'block'
+    gElEditor.style.display = 'grid'
     setImg(imgId)
     renderMeme()
 }

@@ -33,12 +33,25 @@ function setTxtSize(operator) {
     if (operator === '-') gMeme.lines[0].size--
 }
 
+function addLine() {
+    const newLine = _createLine()
+    gMeme.lines.push(newLine)
+}
+
 function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
 
 function getImgs() {
     return gImgs
+}
+
+function _createLine() {
+    return {
+        txt: 'Hello Meme Generator!',
+        size: 20,
+        color: 'green'
+    }
 }
 
 function _createImgs() {

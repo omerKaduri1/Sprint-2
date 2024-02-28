@@ -6,6 +6,10 @@
     minmax(50px, 1fr);
 }
 
+.main-layout >*{
+    grid-column: 2;
+} 
+
 .main-layout img {
     height: 350px;
 }

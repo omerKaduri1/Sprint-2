@@ -29,10 +29,12 @@
             <div class="user-editor">
                 <div class="text-editor">
                     <input oninput="onTxtChange(this.value)" type="text" placeholder="Enter text">
+                    <button onclick="onAddLine()" class="add-line">
+                        <img src="icons/add.png">
+                    </button>
                 </div>
 
                 <div class="advanced-editor">
-
                     <button onclick="onTxtSizeChange(this.value)" value="+">
                         <img src="icons/increase font - icon.png">
                     </button>
