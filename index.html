@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body onload="onInit()">
     <header class="main-header">
         <div class="logo">
@@ -21,7 +23,7 @@
     </header>
 
     <main class="main-content main-layout">
-        <section class="gallery">         
+        <section class="gallery">
         </section>
         <section class="editor">
             <div class="user-editor">
@@ -30,11 +32,16 @@
                 </div>
 
                 <div class="advanced-editor">
-                    
-                    <button onclick="onTxtSizeChange(this.value)" value="+">increase</button>
-                    <button onclick="onTxtSizeChange(this.value)" value="-">decrease</button>
+
+                    <button onclick="onTxtSizeChange(this.value)" value="+">
+                        <img src="icons/increase font - icon.png">
+                    </button>
+                    <button onclick="onTxtSizeChange(this.value)" value="-">
+                        <img src="icons/decrease font - icon.png">
+                    </button>
                     <button>
-                        <label for="color" id="color">Pick a color
+                        <label for="color" id="color">
+                            <img src="icons/text stroke.png">
                             <input oninput="onColorChange(this.value)" type="color" name="color" id="color">
                         </label>
                     </button>
@@ -48,7 +55,7 @@
             </div>
         </section>
     </main>
-    
+
     <footer class="main-footer"></footer>
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.js"></script>
@@ -56,4 +63,5 @@
     <script src="js/memeController.js"></script>
     <script src="js/galleryController.js"></script>
 </body>
+
 </html>
