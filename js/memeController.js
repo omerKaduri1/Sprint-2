@@ -81,13 +81,12 @@ function onSwitchLines() {
 }
 
 function drawFrame(x, y, size, txtWidth) {
-    // const meme = getMeme()
-    // const selectedLineIdx = meme.selectedLineIdx
     gCtx.beginPath()
-    gCtx.rect(x - (txtWidth / 2), y - size, txtWidth + 5, size + 5)
+    gCtx.setLineDash([3, 3])
     gCtx.lineWidth = 1
     gCtx.strokeStyle = 'black'
-    gCtx.stroke()
+    gCtx.strokeRect(x - (txtWidth / 2), y - size, txtWidth + 5, size + 5)
+    gCtx.setLineDash([])
 
 }
 
