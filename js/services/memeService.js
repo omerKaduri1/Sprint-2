@@ -1,7 +1,7 @@
 'use strict'
 
 var gImgs 
-var gId = 0
+var gId = 1
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
@@ -24,6 +24,10 @@ function setLineTxt(newTxt) {
     gMeme.lines[0].txt = newTxt
 }
 
+function setImg(imgId) {
+    gMeme.selectedImgId = imgId
+}
+
 function getImgs() {
     return gImgs
 }
@@ -36,10 +40,10 @@ function _createImgs() {
     return gImgs
 }
 
-function _createImg() {
+function _createImg(id = gId++) {
     return {
-        id: gId++,
-        url: `img/${gId}.jpg`,
+        id,
+        url: `img/${id}.jpg`,
         keywords: ['funny', 'president']
     }
 }
