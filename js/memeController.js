@@ -2,14 +2,16 @@
 
 var gElCanvas
 var gCtx
+var gElEditor = document.querySelector('.editor')
+
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
     renderGallery()
-
-    renderMeme()
+    gElEditor.style.display = 'none'
+    // renderMeme()
 }
 
 function renderMeme() {

@@ -8,10 +8,13 @@ function renderGallery() {
     `)
    
     const elGallery = document.querySelector('section.gallery')
-    elGallery.innerHTML = strHTMLs
+    elGallery.innerHTML = strHTMLs.join('')
 }
 
 function onImgSelect(imgId){
+    const elGallery = document.querySelector('section.gallery')
+    elGallery.style.display = 'none'
+    gElEditor.style.display = 'block'
     setImg(imgId)
     renderMeme()
 }
