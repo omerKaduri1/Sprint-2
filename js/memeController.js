@@ -4,6 +4,7 @@ var gElCanvas
 var gCtx
 var gElEditor = document.querySelector('.editor')
 
+const LINE_SPACE = 50
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
@@ -21,16 +22,22 @@ function renderMeme() {
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        let y = gElCanvas.height / 6
-        meme.lines.forEach(line => {
-            drawText(line.txt, line.size, line.color, y)
-            y = gElCanvas.height / 1.5
+        let x = gElCanvas.width / 2
+        let y = LINE_SPACE
+        meme.lines.forEach((line, idx) => {
+            const meme = getMeme()
+            drawText(line.txt, line.size, line.color, y, x)
+            let txtWidth = gCtx.measureText(line.txt).width
+            line.txtWidth = txtWidth
+            line.y = y
+            line.x = x
+            if (meme.selectedLineIdx === idx) drawFrame(x, y, line.size, txtWidth)
+            y += LINE_SPACE
         })
     }
 }
 
-function drawText(text = 'Hello Meme Generator!', size, color, y) {
-    let x = gElCanvas.width / 2
+function drawText(text = 'Hello Meme Generator!', size, color, y, x) {
     // let y = gElCanvas.height / 6
     gCtx.lineWidth = 2
     gCtx.strokeStyle = color
@@ -39,7 +46,6 @@ function drawText(text = 'Hello Meme Generator!', size, color, y) {
 
     gCtx.font = `${size}px Impact`
     gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
 
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
@@ -61,8 +67,28 @@ function onTxtSizeChange(operator) {
 }
 
 function onAddLine() {
-    addLine()
+    const newLine = addLine()
+    const { x, y, size, txtWidth } = newLine
+    drawFrame(x, y, size, txtWidth)
     renderMeme()
+}
+
+function onSwitchLines() {
+    const txtInput = document.querySelector('.txt-edit')
+    txtInput.value = ''
+    const line = switchLines()
+    renderMeme()
+}
+
+function drawFrame(x, y, size, txtWidth) {
+    // const meme = getMeme()
+    // const selectedLineIdx = meme.selectedLineIdx
+    gCtx.beginPath()
+    gCtx.rect(x - (txtWidth / 2), y - size, txtWidth + 5, size + 5)
+    gCtx.lineWidth = 1
+    gCtx.strokeStyle = 'black'
+    gCtx.stroke()
+
 }
 
 function downloadMeme(elLink) {

@@ -21,21 +21,28 @@ function getMeme() {
 }
 
 function setLineTxt(newTxt) {
-    gMeme.lines[0].txt = newTxt
+    gMeme.lines[gMeme.selectedLineIdx].txt = newTxt
 }
 
 function setTxtColor(newColor) {
-    gMeme.lines[0].color = newColor
+    gMeme.lines[gMeme.selectedLineIdx].color = newColor
 }
 
 function setTxtSize(operator) {
-    if (operator === '+') gMeme.lines[0].size++
-    if (operator === '-') gMeme.lines[0].size--
+    if (operator === '+') gMeme.lines[gMeme.selectedLineIdx].size++
+    if (operator === '-') gMeme.lines[gMeme.selectedLineIdx].size--
 }
 
 function addLine() {
     const newLine = _createLine()
     gMeme.lines.push(newLine)
+    return newLine
+}
+
+function switchLines() {
+    gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
+    return gMeme.lines[gMeme.selectedLineIdx]
 }
 
 function setImg(imgId) {

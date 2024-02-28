@@ -28,9 +28,12 @@
         <section class="editor">
             <div class="user-editor">
                 <div class="text-editor">
-                    <input oninput="onTxtChange(this.value)" type="text" placeholder="Enter text">
+                    <input oninput="onTxtChange(this.value)" class="txt-edit" type="text" placeholder="Enter text">
                     <button onclick="onAddLine()" class="add-line">
                         <img src="icons/add.png">
+                    </button>
+                    <button onclick="onSwitchLines()">
+                        <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png">
                     </button>
                 </div>
 
