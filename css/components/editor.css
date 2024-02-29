@@ -1,15 +1,7 @@
 .editor {
     margin-block: 20px;
-}
-
-.editor-tools {
-    grid-area: e;
-    justify-items: center;
-    align-items: center;
-}
-
-canvas {
-    grid-area: c;
+    gap: 20px;
+    justify-content: center;
 }
 
 input.txt-edit {
@@ -38,7 +30,7 @@ input.txt-edit {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 .font-family {
@@ -71,14 +63,22 @@ input.txt-edit {
     color: var(--primary-1);
 }
 
-.facebook-btn {
+.facebook-btn img {
+    height: 70%;
+}
+
+.share-btn {
     font-size: 1.25em;
-    color: var(--primary-1);
 }
 
 .btn a {
     font-size: 1.5em;
     color: var(--primary-1);
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
 }
 
 .canvas-container {
