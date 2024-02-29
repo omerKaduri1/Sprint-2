@@ -12,8 +12,7 @@ function onInit() {
 
     renderGallery()
     gElEditor.style.display = 'none'
-    addMouseListeners()
-    addTouchListeners()
+    addListeners()
     // renderMeme()
 }
 
@@ -28,7 +27,7 @@ function renderMeme() {
         let y = LINE_SPACE
         meme.lines.forEach((line, idx) => {
             const meme = getMeme()
-            drawText(line.txt, line.size, line.color, y, x)
+            drawText(line.txt, line.size, line.color, y, x, line.txtAlign, meme.font)
             let txtWidth = gCtx.measureText(line.txt).width
             line.txtWidth = txtWidth
             line.y = y
@@ -39,7 +38,7 @@ function renderMeme() {
     }
 }
 
-function drawText(text = 'Hello Meme Generator!', size, color = 'black', y, x, font = 'Impact', textAlign = 'center') {
+function drawText(text, size, color = 'black', y, x, textAlign, font) {
     // let y = gElCanvas.height / 6
     gCtx.lineWidth = 2
     gCtx.strokeStyle = color
@@ -58,6 +57,11 @@ function onTxtChange(newTxt) {
     renderMeme()
 }
 
+function onSetFont(font) {
+    setFont(font)
+    renderMeme()
+}
+
 function onDeleteTxt() {
     deleteTxt()
     renderMeme()
@@ -69,7 +73,7 @@ function onTxtMove(operator) {
 }
 
 function onAlignTxt(alignment) {
-    gCtx.textAlign = alignment
+    alignTxt(alignment)
     renderMeme()
 }
 
@@ -99,17 +103,18 @@ function onSwitchLines() {
 
 function drawFrame(x, y, size, txtWidth) {
     gCtx.beginPath()
-    gCtx.setLineDash([3, 3])
+    gCtx.setLineDash([5, 3])
     gCtx.lineWidth = 1
     gCtx.strokeStyle = 'black'
     if (gCtx.textAlign === 'center') x = x - (txtWidth / 2)
+    if (gCtx.textAlign === 'right') x = x-txtWidth
     gCtx.strokeRect(x, y - size, txtWidth + 5, size + 5)
     gCtx.setLineDash([])
 }
 
 function onCanvasClick(ev) {
-    const { offsetX, offsetY, clientX, clientY } = ev
-    
+    const { offsetX, offsetY } = ev
+
     findClickedLine(offsetX, offsetY)
     renderMeme()
 }
@@ -126,4 +131,20 @@ function addMouseListeners() {
 
 function addTouchListeners() {
     gElCanvas.addEventListener('touchStart', onCanvasClick)
+}
+
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
+}
+
+function addListeners() {
+    addMouseListeners()
+    addTouchListeners()
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderMeme()
+    })
 }

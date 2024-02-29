@@ -28,13 +28,13 @@
 
         <section class="editor">
             <div class="user-editor">
-                <input oninput="onTxtChange(this.value)" class="txt-edit" type="text" placeholder="Enter text">
+                <input oninput="onTxtChange(this.value)" class="txt-edit" type="text" placeholder="Add Text Here">
                 <div class="text-editor">
-                    <button onclick="onAddLine()" class="add-line">
-                        <img src="icons/add.png">
-                    </button>
                     <button onclick="onSwitchLines()">
                         <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png">
+                    </button>
+                    <button onclick="onAddLine()" class="add-line">
+                        <img src="icons/add.png">
                     </button>
                     <button onclick="onDeleteTxt()">
                         <img src="icons/trash.png">
@@ -42,21 +42,28 @@
                 </div>
 
                 <div class="advanced-editor">
-                    <button onclick="onAlignTxt(this.value)" value="left">
-                        <img src="icons/align-to-left.png">
-                    </button>
-                    <button onclick="onAlignTxt(this.value)" value="center">
-                        <img src="icons/center-text-alignment.png">
-                    </button>
-                    <button onclick="onAlignTxt(this.value)" value="right">
-                        <img src="icons/align-to-right.png">
-                    </button>
                     <button onclick="onTxtSizeChange(this.value)" value="+">
                         <img src="icons/increase font - icon.png">
                     </button>
                     <button onclick="onTxtSizeChange(this.value)" value="-">
                         <img src="icons/decrease font - icon.png">
                     </button>
+                    <button onclick="onAlignTxt(this.value)" value="right">
+                        <img src="icons/align-to-left.png">
+                    </button>
+                    <button onclick="onAlignTxt(this.value)" value="center">
+                        <img src="icons/center-text-alignment.png">
+                    </button>
+                    <button onclick="onAlignTxt(this.value)" value="left">
+                        <img src="icons/align-to-right.png">
+                    </button>
+                    <select oninput="onSetFont(this.value)" class="font-family" name="font-family" id="font-family">
+                        <option value="Impact">Impact</option>
+                        <option value="Arial">Arial</option>
+                        <option value="monospace">Monospace</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                    </select>
                     <button onclick="onTxtMove(this.value)" value="+" class="txt-up">
                         <img src="icons/arrow-up.png">
                     </button>
@@ -81,11 +88,17 @@
 
     </main>
 
-    <footer class="main-footer"></footer>
+    <footer class="main-footer flex">
+        <div class="logo">
+            <img src="logo/LOGO.png" alt="site-logo">
+        </div>
+        <small class="footer-rights">© All Rights Reserved 2024 </small>
+    </footer>
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/memeController.js"></script>
     <script src="js/galleryController.js"></script>
 </body>
+
 </html>

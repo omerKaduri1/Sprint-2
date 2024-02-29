@@ -5,11 +5,13 @@ var gId = 1
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
+    font: 'Impact',
     lines: [
         {
             txt: 'I sometimes eat Falafel',
             size: 20,
-            color: 'black'
+            color: 'black',
+            txtAlign: 'center'
         }
     ]
 }
@@ -38,10 +40,19 @@ function setTxtSize(operator) {
     if (operator === '-') gMeme.lines[gMeme.selectedLineIdx].size--
 }
 
+function setFont(font) {
+    gMeme.font = font
+}
+
 function moveTxt(operator) {
     if (operator === '+') gMeme.lines[gMeme.selectedLineIdx].y++
     if (operator === '-') gMeme.lines[gMeme.selectedLineIdx].y--
     console.log(gMeme.lines[gMeme.selectedLineIdx].y);
+}
+
+function alignTxt(alignment) {
+    gMeme.lines[gMeme.selectedLineIdx].txtAlign = alignment
+    console.log(gMeme.lines[gMeme.selectedLineIdx]);
 }
 
 function addLine() {
@@ -82,7 +93,8 @@ function _createLine() {
     return {
         txt: 'Hello Meme Generator!',
         size: 20,
-        color: 'black'
+        color: 'black',
+        txtAlign: 'center'
     }
 }
 
