@@ -1,3 +1,7 @@
 .gallery img {
     height: 350px;
 }
+
+.main-content {
+    margin-block: 20px;
+}

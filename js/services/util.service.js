@@ -24,3 +24,7 @@ function getRandomInt(min, max) {
     const maxFloored = Math.floor(max)
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled)
 }
+
+function refactorY(y) {
+    return y + 50
+}

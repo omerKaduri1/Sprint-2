@@ -1,45 +1,44 @@
-/* .user-editor {
-    display: grid;
-    grid-template-columns: minmax(500px, 1fr)
-    minmax(500px,1fr);
-    
-} */
-
 .editor {
     margin-block: 20px;
-    grid-template-areas:
-        'c e';
-    gap: 20px;
 }
 
-.user-editor {
+.editor-tools {
     grid-area: e;
+    justify-items: center;
+    align-items: center;
 }
 
 canvas {
     grid-area: c;
 }
 
-.user-editor {
-    display: grid;
-}
-
 input.txt-edit {
-    width: 80%;
+    width: 70%;
     height: 65px;
     font-size: 1.3em;
     border-radius: 15px;
     border: none;
     padding-inline-start: 50px;
+    margin-block-end: 20px;
+    margin-inline: auto 0;
+}
+
+.text-editor {
+    margin-block-end: 20px;
 }
 
 .advanced-editor {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    /* grid-auto-flow: column;
-    grid-template-columns: repeat(5, minmax(auto-fit, 1fr));
-    grid-template-rows: auto; */
+    justify-content: center
+}
+
+.btns-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between
 }
 
 .font-family {
@@ -49,38 +48,42 @@ input.txt-edit {
     height: 60px;
 }
 
-/* .text-editor {
-    display: grid;
-    grid-auto-flow: column;
-} */
+.inner-container {
+    margin-block: 20px;
+}
 
-.user-editor img {
+.editor-tools img {
     width: 35px;
     height: 35px;
 }
 
-.editor button {
+.editor-tools button {
     width: 60px;
     height: 60px;
 }
 
-.actions button {
+.btn {
     background-color: var(--primary-base);
-    width: 7.5em;
-    height: 3.75em;
+    height: 50px;
     border-radius: 10px;
     padding-inline: 5px;
     border: none;
+    color: var(--primary-1);
 }
 
-.actions button a {
+.facebook-btn {
+    font-size: 1.25em;
+    color: var(--primary-1);
+}
+
+.btn a {
     font-size: 1.5em;
     color: var(--primary-1);
 }
 
 .canvas-container {
-    max-width: 50vw;
-    /* height: 80vh; */
+    max-width: 50%;
+    justify-self: center;
 }
 
 canvas:hover {

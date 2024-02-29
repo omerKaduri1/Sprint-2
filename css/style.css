@@ -15,3 +15,5 @@
 @import url(components/footer.css);
 
 /* MEDIA QUERIES */
+
+@import url(setup/mq.css);

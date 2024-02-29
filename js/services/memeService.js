@@ -1,25 +1,35 @@
 'use strict'
 
+var gElCanvas = document.querySelector('canvas')
 var gImgs
+var gY = 50
 var gId = 1
+var gMemes = []
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     font: 'Impact',
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'Enter Text',
             size: 20,
             color: 'black',
-            txtAlign: 'center'
+            txtAlign: 'center',
+            isDrag: false,
         }
     ]
 }
+
+// var gKeywordSearchCountMap = {'funny': 12,'cat': 16, 'baby': 2}
 
 _createImgs()
 
 function getMeme() {
     return gMeme
+}
+
+function getLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
 }
 
 function setLineTxt(newTxt) {
@@ -44,11 +54,11 @@ function setFont(font) {
     gMeme.font = font
 }
 
-function moveTxt(operator) {
-    if (operator === '+') gMeme.lines[gMeme.selectedLineIdx].y++
-    if (operator === '-') gMeme.lines[gMeme.selectedLineIdx].y--
-    console.log(gMeme.lines[gMeme.selectedLineIdx].y);
-}
+// function moveTxt(operator) {
+//     if (operator === '+') gMeme.lines[gMeme.selectedLineIdx].y++
+//     if (operator === '-') gMeme.lines[gMeme.selectedLineIdx].y--
+//     console.log(gMeme.lines[gMeme.selectedLineIdx].y);
+// }
 
 function alignTxt(alignment) {
     gMeme.lines[gMeme.selectedLineIdx].txtAlign = alignment
@@ -73,12 +83,22 @@ function findClickedLine(offsetX, offsetY) {
         if (gCtx.textAlign === 'center') {
             x = x - (txtWidth / 2)
         }
-        console.log(x, y, size, txtWidth);
         return offsetX >= x && offsetX <= (x + txtWidth)
             && offsetY <= y && offsetY >= (y - size)
     })
     if (idx !== -1) gMeme.selectedLineIdx = idx
-    console.log(gMeme.selectedLineIdx);
+    return idx
+}
+
+function setLineDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+function moveLine(dx, dy) {
+    gMeme.lines[gMeme.selectedLineIdx].x += dx
+    console.log(gMeme.lines[gMeme.selectedLineIdx].x);
+    gMeme.lines[gMeme.selectedLineIdx].y += dy
+    console.log(gMeme.lines[gMeme.selectedLineIdx].y);
 }
 
 function setImg(imgId) {
@@ -89,12 +109,13 @@ function getImgs() {
     return gImgs
 }
 
-function _createLine() {
+function _createLine(y) {
     return {
-        txt: 'Hello Meme Generator!',
+        txt: 'Enter Text',
         size: 20,
         color: 'black',
-        txtAlign: 'center'
+        txtAlign: 'center',
+        isDrag: false
     }
 }
 
@@ -128,4 +149,8 @@ function _createImg(keywords = ['funny'], id = gId++,) {
         url: `img/${id}.jpg`,
         keywords
     }
+}
+
+function _saveMemes() {
+    saveToStorage('MemeDB',gMemes)
 }
