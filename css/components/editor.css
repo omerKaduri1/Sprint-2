@@ -9,8 +9,8 @@
     minmax(500px, 1fr)
     minmax(500px, 1fr); */
     margin-block-start: 20px;
-    grid-template-areas: 
-    'c e';
+    grid-template-areas:
+        'c e';
 }
 
 .user-editor {
@@ -53,4 +53,18 @@ input.txt-edit {
 .editor button {
     width: 60px;
     height: 60px;
+}
+
+.actions button {
+    background-color: var(--primary-base);
+    width: 7.5em;
+    height: 3.75em;
+    border-radius: 10px;
+    padding-inline: 5px;
+    border: none;
+}
+
+.actions button a {
+    font-size: 1.5em;
+    color: var(--primary-1);
 }
