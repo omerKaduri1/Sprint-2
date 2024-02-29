@@ -2,15 +2,14 @@
     display: grid;
     grid-template-columns: minmax(500px, 1fr)
     minmax(500px,1fr);
+    
 } */
 
 .editor {
-    /* grid-template-columns: 
-    minmax(500px, 1fr)
-    minmax(500px, 1fr); */
-    margin-block-start: 20px;
+    margin-block: 20px;
     grid-template-areas:
         'c e';
+        gap: 20px;
 }
 
 .user-editor {
@@ -26,9 +25,12 @@ canvas {
 }
 
 input.txt-edit {
-    width: 370px;
+    width: 80%;
     height: 65px;
-    border-radius: 20px;
+    font-size: 1.3em;
+    border-radius: 15px;
+    border: none;
+    padding-inline-start: 50px;
 }
 
 .advanced-editor {
@@ -38,6 +40,13 @@ input.txt-edit {
     /* grid-auto-flow: column;
     grid-template-columns: repeat(5, minmax(auto-fit, 1fr));
     grid-template-rows: auto; */
+}
+
+.font-family {
+    border: none;
+    font-size: 1em;
+    border-radius: 15px;
+    height: 60px;
 }
 
 /* .text-editor {
@@ -68,3 +77,8 @@ input.txt-edit {
     font-size: 1.5em;
     color: var(--primary-1);
 }
+
+.canvas-container {
+    max-width: 50vw;
+    /* height: 80vh; */
+  }

@@ -1,0 +1,10 @@
+.main-footer {
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: var(--primary-base);
+    height: 12.5em;
+}
+
+.main-footer small {
+    color: var(--primary-1);
+}
