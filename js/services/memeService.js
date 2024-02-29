@@ -56,7 +56,7 @@ function switchLines() {
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
-function findClickedLine(offsetX, offsetY, lineSpace) {
+function findClickedLine(offsetX, offsetY) {
     const idx = gMeme.lines.findIndex(line => {
         let { x, y, size, txtWidth } = line
         if (gCtx.textAlign === 'center') {

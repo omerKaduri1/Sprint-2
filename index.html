@@ -9,12 +9,12 @@
 </head>
 
 <body onload="onInit()">
-    <header class="main-header">
+    <header class="main-header full">
         <div class="logo">
             <img src="logo/LOGO.png" alt="site-logo">
         </div>
         <nav class="main-nav">
-            <ul class="main-nav-list clean-list">
+            <ul class="main-nav-list clean-list flex">
                 <li><a href="#">Gallery</a></li>
                 <li><a href="#">Memes</a></li>
                 <li><a href="#">About</a></li>
@@ -25,24 +25,43 @@
     <main class="main-content main-layout">
         <section class="gallery">
         </section>
+
         <section class="editor">
             <div class="user-editor">
+                <input oninput="onTxtChange(this.value)" class="txt-edit" type="text" placeholder="Enter text">
                 <div class="text-editor">
-                    <input oninput="onTxtChange(this.value)" class="txt-edit" type="text" placeholder="Enter text">
                     <button onclick="onAddLine()" class="add-line">
                         <img src="icons/add.png">
                     </button>
                     <button onclick="onSwitchLines()">
                         <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png">
                     </button>
+                    <button onclick="onDeleteTxt()">
+                        <img src="icons/trash.png">
+                    </button>
                 </div>
 
                 <div class="advanced-editor">
+                    <button onclick="onAlignTxt(this.value)" value="left">
+                        <img src="icons/align-to-left.png">
+                    </button>
+                    <button onclick="onAlignTxt(this.value)" value="center">
+                        <img src="icons/center-text-alignment.png">
+                    </button>
+                    <button onclick="onAlignTxt(this.value)" value="right">
+                        <img src="icons/align-to-right.png">
+                    </button>
                     <button onclick="onTxtSizeChange(this.value)" value="+">
                         <img src="icons/increase font - icon.png">
                     </button>
                     <button onclick="onTxtSizeChange(this.value)" value="-">
                         <img src="icons/decrease font - icon.png">
+                    </button>
+                    <button onclick="onTxtMove(this.value)" value="+" class="txt-up">
+                        <img src="icons/arrow-up.png">
+                    </button>
+                    <button onclick="onTxtMove(this.value)" value="-" class="txt-down">
+                        <img src="icons/arrow-down.png">
                     </button>
                     <button>
                         <label for="color" id="color">
@@ -59,6 +78,7 @@
                 <button><a href="#" onclick="downloadMeme(this)" download="file-name">Download</a></button>
             </div>
         </section>
+
     </main>
 
     <footer class="main-footer"></footer>

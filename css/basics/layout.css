@@ -6,10 +6,16 @@
     minmax(50px, 1fr);
 }
 
-.main-layout >*{
-    grid-column: 2;
-} 
+/* .main-layout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+} */
 
-.main-layout img {
-    height: 350px;
-}
+.main-layout > *:not(.full) {
+    grid-column: 2;
+  } 
+
+  .main-layout > *.full {
+    grid-column: 1 / -1;
+  }

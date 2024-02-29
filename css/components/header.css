@@ -1,8 +1,18 @@
 .main-header {
+    display: flex;
     color: var(--primary-1);
     background-color: var(--primary-base);
+    height: 70px;
 }
 
 .logo img{
-    width: 8.125em;
+    width: 8.125rem;
+}
+
+.main-nav-list {
+    gap: 10px;
+}
+
+.main-nav-list a {
+    color: var(--primary-1);
 }

@@ -1,10 +1,15 @@
-/* FA
-@font-face {
+ /* FA */
+/* @font-face {
     font-family: fa;
     src: url(/fonts/fa/fa-brands-400.ttf);
-}
+} 
 
-button.color::before {
-    content: '\41';
+.txt-up::before {
+    content: '\f062';
+    color: black;
+} 
+
+.txt-down::before {
+    content: '\f063';
     color: black;
 } */

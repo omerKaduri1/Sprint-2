@@ -1,3 +1,15 @@
 .clean-list {
     list-style: none;
 }
+
+.flex {
+    display: flex;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.align-center {
+    align-items: center;
+}

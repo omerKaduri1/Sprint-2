@@ -1,4 +1,56 @@
-.editor img {
+/* .user-editor {
+    display: grid;
+    grid-template-columns: minmax(500px, 1fr)
+    minmax(500px,1fr);
+} */
+
+.editor {
+    /* grid-template-columns: 
+    minmax(500px, 1fr)
+    minmax(500px, 1fr); */
+    margin-block-start: 20px;
+    grid-template-areas: 
+    'c e';
+}
+
+.user-editor {
+    grid-area: e;
+}
+
+canvas {
+    grid-area: c;
+}
+
+.user-editor {
+    display: grid;
+}
+
+input.txt-edit {
+    width: 370px;
+    height: 65px;
+    border-radius: 20px;
+}
+
+.advanced-editor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    /* grid-auto-flow: column;
+    grid-template-columns: repeat(5, minmax(auto-fit, 1fr));
+    grid-template-rows: auto; */
+}
+
+/* .text-editor {
+    display: grid;
+    grid-auto-flow: column;
+} */
+
+.user-editor img {
     width: 35px;
     height: 35px;
+}
+
+.editor button {
+    width: 60px;
+    height: 60px;
 }
