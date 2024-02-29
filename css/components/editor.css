@@ -52,6 +52,8 @@ input.txt-edit {
 .editor-tools button {
     width: 60px;
     height: 60px;
+    border: none;
+    border-radius: 10px;
 }
 
 .btn {
