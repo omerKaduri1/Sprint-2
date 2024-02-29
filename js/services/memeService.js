@@ -9,7 +9,7 @@ var gMeme = {
         {
             txt: 'I sometimes eat Falafel',
             size: 20,
-            color: 'green'
+            color: 'black'
         }
     ]
 }
@@ -24,6 +24,11 @@ function setLineTxt(newTxt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = newTxt
 }
 
+function deleteTxt() {
+    gMeme.lines[gMeme.selectedLineIdx].txt = ''
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+}
+
 function setTxtColor(newColor) {
     gMeme.lines[gMeme.selectedLineIdx].color = newColor
 }
@@ -31,6 +36,12 @@ function setTxtColor(newColor) {
 function setTxtSize(operator) {
     if (operator === '+') gMeme.lines[gMeme.selectedLineIdx].size++
     if (operator === '-') gMeme.lines[gMeme.selectedLineIdx].size--
+}
+
+function moveTxt(operator) {
+    if (operator === '+') gMeme.lines[gMeme.selectedLineIdx].y++
+    if (operator === '-') gMeme.lines[gMeme.selectedLineIdx].y--
+    console.log(gMeme.lines[gMeme.selectedLineIdx].y);
 }
 
 function addLine() {
@@ -45,6 +56,20 @@ function switchLines() {
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
+function findClickedLine(offsetX, offsetY, lineSpace) {
+    const idx = gMeme.lines.findIndex(line => {
+        let { x, y, size, txtWidth } = line
+        if (gCtx.textAlign === 'center') {
+            x = x - (txtWidth / 2)
+        }
+        console.log(x, y, size, txtWidth);
+        return offsetX >= x && offsetX <= (x + txtWidth)
+            && offsetY <= y && offsetY >= (y - size)
+    })
+    if (idx !== -1) gMeme.selectedLineIdx = idx
+    console.log(gMeme.selectedLineIdx);
+}
+
 function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
@@ -57,7 +82,7 @@ function _createLine() {
     return {
         txt: 'Hello Meme Generator!',
         size: 20,
-        color: 'green'
+        color: 'black'
     }
 }
 

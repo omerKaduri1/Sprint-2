@@ -12,6 +12,8 @@ function onInit() {
 
     renderGallery()
     gElEditor.style.display = 'none'
+    addMouseListeners()
+    addTouchListeners()
     // renderMeme()
 }
 
@@ -37,15 +39,15 @@ function renderMeme() {
     }
 }
 
-function drawText(text = 'Hello Meme Generator!', size, color, y, x) {
+function drawText(text = 'Hello Meme Generator!', size, color = 'black', y, x, font = 'Impact', textAlign = 'center') {
     // let y = gElCanvas.height / 6
     gCtx.lineWidth = 2
     gCtx.strokeStyle = color
 
     // gCtx.fillStyle = 'whitesmoke'
 
-    gCtx.font = `${size}px Impact`
-    gCtx.textAlign = 'center'
+    gCtx.font = `${size}px ${font}`
+    gCtx.textAlign = textAlign
 
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
@@ -53,6 +55,21 @@ function drawText(text = 'Hello Meme Generator!', size, color, y, x) {
 
 function onTxtChange(newTxt) {
     setLineTxt(newTxt)
+    renderMeme()
+}
+
+function onDeleteTxt() {
+    deleteTxt()
+    renderMeme()
+}
+
+function onTxtMove(operator) {
+    moveTxt(operator)
+    renderMeme()
+}
+
+function onAlignTxt(alignment) {
+    gCtx.textAlign = alignment
     renderMeme()
 }
 
@@ -76,7 +93,7 @@ function onAddLine() {
 function onSwitchLines() {
     const txtInput = document.querySelector('.txt-edit')
     txtInput.value = ''
-    const line = switchLines()
+    switchLines()
     renderMeme()
 }
 
@@ -85,13 +102,28 @@ function drawFrame(x, y, size, txtWidth) {
     gCtx.setLineDash([3, 3])
     gCtx.lineWidth = 1
     gCtx.strokeStyle = 'black'
-    gCtx.strokeRect(x - (txtWidth / 2), y - size, txtWidth + 5, size + 5)
+    if (gCtx.textAlign === 'center') x = x - (txtWidth / 2)
+    gCtx.strokeRect(x, y - size, txtWidth + 5, size + 5)
     gCtx.setLineDash([])
+}
 
+function onCanvasClick(ev) {
+    const { offsetX, offsetY, clientX, clientY } = ev
+    
+    findClickedLine(offsetX, offsetY)
+    renderMeme()
 }
 
 function downloadMeme(elLink) {
     elLink.download = 'my-meme'
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousedown', onCanvasClick)
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchStart', onCanvasClick)
 }
