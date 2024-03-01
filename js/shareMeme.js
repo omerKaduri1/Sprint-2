@@ -30,3 +30,22 @@ function doUploadImg(imgDataUrl, onSuccess) {
     XHR.open('POST', '//ca-upload.com/here/upload.php')
     XHR.send(formData)
 }
+
+async function shareCanvas() {
+    const dataUrl = gElCanvas.toDataURL()
+    const blob = await (await fetch(dataUrl)).blob()
+    const filesArray = [
+        new File(
+            [blob],
+            'my-meme.png',
+            {
+                type: blob.type,
+                lastModified: new Date().getTime()
+            }
+        )
+    ]
+    const shareData = {
+        files: filesArray,
+    }
+    navigator.share(shareData)
+}

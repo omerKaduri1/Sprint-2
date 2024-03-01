@@ -10,6 +10,13 @@ function renderGallery() {
     elGallery.innerHTML = strHTMLs.join('')
 }
 
+function onGalleryClick() {
+    const elGallery = document.querySelector('section.gallery')
+    elGallery.style.display = 'block'
+    gElEditor.style.display = 'none'
+
+}
+
 function onImgSelect(imgId) {
     const elGallery = document.querySelector('section.gallery')
     const elMain = document.querySelector('main')

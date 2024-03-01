@@ -196,23 +196,3 @@ function getEvPos(ev) {
     }
     return pos
 }
-
-async function shareCanvas() {
-    // const canvasElement = document.getElementById('mycanvasid');
-    const dataUrl = gElCanvas.toDataURL()
-    const blob = await (await fetch(dataUrl)).blob()
-    const filesArray = [
-        new File(
-            [blob],
-            'my-meme.png',
-            {
-                type: blob.type,
-                lastModified: new Date().getTime()
-            }
-        )
-    ]
-    const shareData = {
-        files: filesArray,
-    }
-    navigator.share(shareData)
-}
