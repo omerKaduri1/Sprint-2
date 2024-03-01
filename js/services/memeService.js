@@ -2,7 +2,8 @@
 
 var gElCanvas = document.querySelector('canvas')
 var gImgs
-var gY = 50
+var gCenter = gElCanvas.width / 2
+var gY = 20
 var gId = 1
 var gMemes = []
 var gMeme = {
@@ -10,13 +11,7 @@ var gMeme = {
     selectedLineIdx: 0,
     font: 'Impact',
     lines: [
-        {
-            txt: 'Enter Text',
-            size: 20,
-            color: 'black',
-            txtAlign: 'center',
-            isDrag: false,
-        }
+        _createLine(),
     ]
 }
 
@@ -54,12 +49,6 @@ function setFont(font) {
     gMeme.font = font
 }
 
-// function moveTxt(operator) {
-//     if (operator === '+') gMeme.lines[gMeme.selectedLineIdx].y++
-//     if (operator === '-') gMeme.lines[gMeme.selectedLineIdx].y--
-//     console.log(gMeme.lines[gMeme.selectedLineIdx].y);
-// }
-
 function alignTxt(alignment) {
     gMeme.lines[gMeme.selectedLineIdx].txtAlign = alignment
     console.log(gMeme.lines[gMeme.selectedLineIdx]);
@@ -79,12 +68,12 @@ function switchLines() {
 
 function findClickedLine(offsetX, offsetY) {
     const idx = gMeme.lines.findIndex(line => {
-        let { x, y, size, txtWidth } = line
+        let { pos, size, txtWidth } = line
         if (gCtx.textAlign === 'center') {
-            x = x - (txtWidth / 2)
+            pos.x = pos.x - (txtWidth / 2)
         }
-        return offsetX >= x && offsetX <= (x + txtWidth)
-            && offsetY <= y && offsetY >= (y - size)
+        return offsetX >= pos.x && offsetX <= (pos.x + txtWidth)
+            && offsetY <= pos.y && offsetY >= (pos.y - size)
     })
     if (idx !== -1) gMeme.selectedLineIdx = idx
     return idx
@@ -95,10 +84,8 @@ function setLineDrag(isDrag) {
 }
 
 function moveLine(dx, dy) {
-    gMeme.lines[gMeme.selectedLineIdx].x += dx
-    console.log(gMeme.lines[gMeme.selectedLineIdx].x);
-    gMeme.lines[gMeme.selectedLineIdx].y += dy
-    console.log(gMeme.lines[gMeme.selectedLineIdx].y);
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
 }
 
 function setImg(imgId) {
@@ -109,14 +96,20 @@ function getImgs() {
     return gImgs
 }
 
-function _createLine(y) {
-    return {
+function _createLine(y = gY + 30) {
+    const newLine = {
+        pos: {
+            x: gCenter,
+            y,
+        },
         txt: 'Enter Text',
         size: 20,
         color: 'black',
         txtAlign: 'center',
         isDrag: false
     }
+    gY = y
+    return newLine
 }
 
 function _createImgs() {
@@ -152,5 +145,5 @@ function _createImg(keywords = ['funny'], id = gId++,) {
 }
 
 function _saveMemes() {
-    saveToStorage('MemeDB',gMemes)
+    saveToStorage('MemeDB', gMemes)
 }

@@ -25,17 +25,13 @@ function renderMeme() {
     img.src = `img/${meme.selectedImgId}.jpg`
     gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    let x = gElCanvas.width / 2
-    let y = 50
     meme.lines.forEach((line, idx) => {
         const meme = getMeme()
-        drawText(line.txt, line.size, line.color, y, x, line.txtAlign, meme.font)
+        const { txt, size, color, pos, txtAlign } = line
+        drawText(txt, size, color, pos.y, pos.x, txtAlign, meme.font)
         let txtWidth = gCtx.measureText(line.txt).width
         line.txtWidth = txtWidth
-        line.y = y
-        line.x = x
-        if (meme.selectedLineIdx === idx) drawFrame(x, y, line.size, txtWidth)
-        y += 50
+        if (meme.selectedLineIdx === idx) drawFrame(pos.x, pos.y, size, txtWidth)
     })
 }
 
@@ -64,11 +60,6 @@ function onDeleteTxt() {
     deleteTxt()
     renderMeme()
 }
-
-// function onTxtMove(operator) {
-//     moveTxt(operator)
-//     renderMeme()
-// }
 
 function onAlignTxt(alignment) {
     alignTxt(alignment)
@@ -118,7 +109,6 @@ function removeFrame(x, y, size, txtWidth) {
 
 function onCanvasClick(ev) {
     gStartPos = getEvPos(ev)
-    // const { offsetX, offsetY } = pos
 
     const clickedLineIdx = findClickedLine(gStartPos.x, gStartPos.y)
     if (clickedLineIdx === -1) return
