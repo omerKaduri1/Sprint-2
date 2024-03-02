@@ -3,6 +3,7 @@
 var gElCanvas
 var gCtx
 var gElEditor = document.querySelector('.editor')
+var gElSavedMemes = document.querySelector('.saved-memes')
 let gStartPos
 
 const TOUCH_EVENTS = ['touchstart', 'touchmove', 'touchend']
@@ -13,6 +14,7 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
 
     gElEditor.style.display = 'none'
+    gElSavedMemes.style.display = 'none'
 
     resizeCanvas()
     renderGallery()
@@ -112,7 +114,6 @@ function onCanvasClick(ev) {
 
     const clickedLineIdx = findClickedLine(gStartPos.x, gStartPos.y)
     if (clickedLineIdx === -1) return
-    console.log('?');
     setLineDrag(true)
     document.body.style.cursor = 'grabbing'
     renderMeme()
@@ -185,4 +186,16 @@ function getEvPos(ev) {
         }
     }
     return pos
+}
+
+function onSaveMeme() {
+    saveMeme()
+}
+
+function onMemesClick() {
+    const elGallery = document.querySelector('section.gallery')
+    gElSavedMemes.style.display = 'block'
+    elGallery.style.display = 'none'
+    gElEditor.style.display = 'none'
+    renderSavedSection()
 }

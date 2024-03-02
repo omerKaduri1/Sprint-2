@@ -1,21 +1,19 @@
 'use strict'
 
+const MEME_DB = 'memeDB'
 var gElCanvas = document.querySelector('canvas')
 var gImgs
 var gCenter = gElCanvas.width / 2
 var gY = 20
 var gId = 1
-var gMemes = []
 var gMeme = {
-    selectedImgId: 1,
+    selectedImgId: 0,
     selectedLineIdx: 0,
     font: 'Impact',
     lines: [
         _createLine(),
     ]
 }
-
-// var gKeywordSearchCountMap = {'funny': 12,'cat': 16, 'baby': 2}
 
 _createImgs()
 
@@ -51,7 +49,6 @@ function setFont(font) {
 
 function alignTxt(alignment) {
     gMeme.lines[gMeme.selectedLineIdx].txtAlign = alignment
-    console.log(gMeme.lines[gMeme.selectedLineIdx]);
 }
 
 function addLine() {
@@ -81,6 +78,10 @@ function findClickedLine(offsetX, offsetY) {
 
 function setLineDrag(isDrag) {
     gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+function setImgFromGallery(isImgFromGallery) {
+    gMeme.isImgFromGallery = isImgFromGallery
 }
 
 function moveLine(dx, dy) {
@@ -142,8 +143,4 @@ function _createImg(keywords = ['funny'], id = gId++,) {
         url: `img/${id}.jpg`,
         keywords
     }
-}
-
-function _saveMemes() {
-    saveToStorage('MemeDB', gMemes)
 }

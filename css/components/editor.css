@@ -73,6 +73,10 @@ input.txt-edit {
     font-size: 1.25em;
 }
 
+.save-btn {
+    font-size: 1.25em;
+}
+
 .btn a {
     font-size: 1.5em;
     color: var(--primary-1);

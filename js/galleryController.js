@@ -11,6 +11,7 @@ function renderGallery() {
 }
 
 function onGalleryClick() {
+    setImgFromGallery(true)
     const elGallery = document.querySelector('section.gallery')
     elGallery.style.display = 'block'
     gElEditor.style.display = 'none'

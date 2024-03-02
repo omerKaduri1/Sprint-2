@@ -16,22 +16,11 @@
         <nav class="main-nav">
             <ul class="main-nav-list clean-list flex">
                 <li><a href="#" onclick="onGalleryClick()">Gallery</a></li>
-                <li><a href="#">Memes</a></li>
             </ul>
         </nav>
         <button class="open-menu-btn" onclick="openMenu()" type="button">☰</button>
         <button class="close-menu-btn" onclick="closeMenu()" type="button">X</button>
     </header>
-    <!-- <section class="gallery-filter">
-        <input type="text" placeholder="Enter keyword">
-        <input list="keywords" name="keywords" id="keywords">
-        <datalist id="keywords">
-            <option value="funny">
-            <option value="baby">
-            <option value="animals">
-            <option value="president">
-        </datalist>
-    </section> -->
 
     <main class="main-content main-layout">
         <section class="gallery">
@@ -96,8 +85,12 @@
                             download="file-name">Download</a></button>
                     <button class="btn facebook-btn" onclick="onUploadImg()"><img src="icons/facebook-logo.png"></button>
                     <button onclick="shareCanvas()" class="btn share-btn">Share</button>
+                    <button class="btn save-btn" onclick="onSaveMeme()">Save</button>
                 </div>
             </div>
+        </section>
+
+        <section class="saved-memes">
         </section>
 
     </main>
