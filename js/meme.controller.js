@@ -26,17 +26,19 @@ function onInit() {
 function renderMeme() {
     const meme = getMeme()
     const img = new Image()
-    img.src = `img/${meme.selectedImgId}.jpg`
-    gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    meme.lines.forEach((line, idx) => {
-        const meme = getMeme()
-        const { txt, size, color, fillColor, pos, txtAlign } = line
-        drawText(txt, size, color, fillColor, pos.y, pos.x, txtAlign, meme.font)
-        let txtWidth = gCtx.measureText(line.txt).width
-        line.txtWidth = txtWidth
-        if (meme.selectedLineIdx === idx) drawFrame(pos.x, pos.y, size, txtWidth)
-    })
+    if (meme) {
+        img.src = `img/${meme.selectedImgId}.jpg`
+        gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+        meme.lines.forEach((line, idx) => {
+            const meme = getMeme()
+            const { txt, size, color, fillColor, pos, txtAlign } = line
+            drawText(txt, size, color, fillColor, pos.y, pos.x, txtAlign, meme.font)
+            let txtWidth = gCtx.measureText(line.txt).width
+            line.txtWidth = txtWidth
+            if (meme.selectedLineIdx === idx) drawFrame(pos.x, pos.y, size, txtWidth)
+        })
+    }
 }
 
 function drawText(text, size, color, fillColor, y, x, textAlign, font) {
