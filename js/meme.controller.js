@@ -18,6 +18,8 @@ function onInit() {
 
     resizeCanvas()
     renderGallery()
+    renderDataList()
+    renderKeywordsList()
     addListeners()
 }
 
@@ -59,8 +61,8 @@ function onSetFont(font) {
     renderMeme()
 }
 
-function onDeleteTxt() {
-    deleteTxt()
+function ondeleteLine() {
+    deleteLine()
     renderMeme()
 }
 

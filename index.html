@@ -26,6 +26,19 @@
 
     <main class="main-content main-layout">
         <section class="gallery">
+            <header class="gallery-header flex space-between">
+                <div class="filter-container">
+                    <input type="text" name="filter" list="keywords" class="filter" oninput="onSetFilter(this.value)"/>
+
+                    <datalist id="keywords">
+                    </datalist>
+
+                    <button onclick="onClearFilter()" class="btn clear-ctn">Clear</button>
+                </div>
+                <ul class="keywords-list clean-list flex">
+                </ul>
+            </header>
+            <section class="gallery-img-container"></section>
         </section>
 
         <section class="editor flex">
@@ -42,7 +55,7 @@
                         <button onclick="onAddLine()" class="add-line">
                             <img src="icons/add.png">
                         </button>
-                        <button onclick="onDeleteTxt()">
+                        <button onclick="ondeleteLine()">
                             <img src="icons/trash.png">
                         </button>
                     </div>
@@ -78,7 +91,7 @@
                                 <label for="color">
                                     <img src="icons/text stroke.png">
                                 </label>
-                                    <input oninput="onColorChange(this.value)" type="color" name="color" id="color">
+                                <input oninput="onColorChange(this.value)" type="color" name="color" id="color">
                             </button>
                             <button class="fill-color-btn">
                                 <label for="fill-color">

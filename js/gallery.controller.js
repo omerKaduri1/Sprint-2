@@ -6,8 +6,29 @@ function renderGallery() {
     <img onclick="onImgSelect(${img.id})" src="${img.url}">
     `)
 
-    const elGallery = document.querySelector('section.gallery')
+    const elGallery = document.querySelector('.gallery-img-container')
     elGallery.innerHTML = strHTMLs.join('')
+}
+
+function renderDataList() {
+    const keywords = getKeywords()
+    const keyNames = Object.keys(keywords)
+    const strHTMLs = keyNames.map(keyName => `<option value="${keyName}"></option>`)
+
+    const elDatalist = document.querySelector('datalist')
+    elDatalist.innerHTML = strHTMLs.join('')
+}
+
+function renderKeywordsList() {
+    const keywords = getKeywords()
+    let strHTML = ''
+    for (const keyword in keywords) {
+        const wordSize = !keywords[keyword] ? 15 : keywords[keyword] + 15
+        strHTML += `<li style="font-size: ${wordSize}px">${keyword}</li>`
+    }
+
+    const elKeywordsList = document.querySelector('.keywords-list')
+    elKeywordsList.innerHTML = strHTML
 }
 
 function onGalleryClick() {
@@ -27,6 +48,18 @@ function onImgSelect(imgId) {
     createMeme()
     setImg(imgId)
     renderMeme()
+}
+
+function onSetFilter(filter) {
+    setFilterBy(filter)
+    renderGallery()
+}
+
+function onClearFilter() {
+    const elFilter = document.querySelector('input.filter')
+    elFilter.value = ''
+    setFilterBy(elFilter.value)
+    renderGallery()
 }
 
 function openMenu() {

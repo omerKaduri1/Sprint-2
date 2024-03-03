@@ -7,8 +7,11 @@ var gCenter = gElCanvas.width / 2
 var gY = 20
 var gId = 1
 var gMeme
+var gFilterBy = ''
 
 _createImgs()
+
+var gKeywordSearchCountMap = { 'funny': 3, 'cat': 0, 'baby': 2 }
 
 function createMeme() {
     gMeme = {
@@ -25,17 +28,27 @@ function getMeme() {
     return gMeme
 }
 
-function getLine() {
-    return gMeme.lines[gMeme.selectedLineIdx]
+function getImgs() {
+    if (!gFilterBy) return gImgs
+    return _filterImgs()
 }
+
+function getKeywords() {
+    return gKeywordSearchCountMap
+}
+
+// function getCurrLine() {
+//     return gMeme.lines[gMeme.selectedLineIdx]
+// }
 
 function setLineTxt(newTxt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = newTxt
 }
 
-function deleteTxt() {
+function deleteLine() {
     gMeme.lines[gMeme.selectedLineIdx].txt = ''
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    gMeme.selectedLineIdx = 0
 }
 
 function setTxtColor(newColor) {
@@ -62,6 +75,7 @@ function alignTxt(alignment) {
 function addLine() {
     const newLine = _createLine()
     gMeme.lines.push(newLine)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
     return newLine
 }
 
@@ -101,8 +115,16 @@ function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
 
-function getImgs() {
-    return gImgs
+function setFilterBy(filterBy) {
+    gFilterBy = filterBy.toLowerCase()
+}
+
+function _filterImgs() {
+    const filteredImgs = gImgs.filter(img => {
+        const { keywords } = img
+        return keywords.some(word => word.toLowerCase().includes(gFilterBy))
+    })
+    return filteredImgs
 }
 
 function _createLine(y = gY + 30) {
