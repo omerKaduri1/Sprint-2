@@ -51,7 +51,6 @@ function onImgSelect(imgId) {
 }
 
 function onSetFilter(filter) {
-    // updateKeywordsMap(filter)
     setFilterBy(filter)
     renderKeywordsList()
     renderGallery()
@@ -63,6 +62,16 @@ function onKeywordSearch(keyword){
     setFilterBy(keyword)
     renderKeywordsList()
     renderGallery()
+}
+
+function onRandomClick() {
+    const elGallery = document.querySelector('section.gallery')
+    const elMain = document.querySelector('main')
+    elMain.classList.add('editor')
+    elGallery.style.display = 'none'
+    gElEditor.style.display = 'flex'
+    createRandMeme()
+    renderMeme()
 }
 
 function onClearFilter() {

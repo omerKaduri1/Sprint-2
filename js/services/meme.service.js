@@ -8,7 +8,7 @@ var gY = 20
 var gId = 1
 var gMeme
 var gFilterBy = ''
-var gKeywordSearchCountMap = loadFromStorage(KEYWORDS_DB)|| { 'funny': 3, 'cat': 0, 'baby': 2, 'animal': 5, 'serious': 0, 'dog': 1 }
+var gKeywordSearchCountMap = loadFromStorage(KEYWORDS_DB) || { 'funny': 3, 'cat': 0, 'baby': 2, 'animal': 5, 'serious': 0, 'dog': 1 }
 
 _createImgs()
 
@@ -26,6 +26,17 @@ function createMeme() {
 
 function getMeme() {
     return gMeme
+}
+
+function createRandMeme() {
+    gMeme = {
+        selectedImgId: getRandomInt(1, gImgs.length + 1),
+        selectedLineIdx: 0,
+        font: 'Impact',
+        lines: [
+            _createLine()
+        ]
+    }
 }
 
 function getImgs() {

@@ -29,13 +29,13 @@
             <header class="gallery-header  main-layout flex space-between">
                 <div class="filter-container">
                     <input type="text" name="filter" list="keywords" class="filter" placeholder="Enter search keyword" oninput="onSetFilter(this.value)"/>
-                    <!-- <button class="search-btn"><img src="icons/search-icon.png"></button> -->
 
                     <datalist id="keywords">
                     </datalist>
 
                     <button onclick="onClearFilter()" class="clear-btn">Clear</button>
                 </div>
+                <button class="random-btn" onclick="onRandomClick()">I'm random</button>
                 <ul class="keywords-list clean-list flex">
                 </ul>
             </header>
