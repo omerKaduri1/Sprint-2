@@ -56,6 +56,8 @@ function onSetFilter(filter) {
 }
 
 function onKeywordSearch(keyword){
+    const elSearchInput = document.querySelector('input.filter')
+    elSearchInput.value = keyword
     setFilterBy(keyword)
     renderGallery()
 }

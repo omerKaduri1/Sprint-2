@@ -11,3 +11,7 @@ input.filter {
 .keywords-list {
     gap: 10px;
 }
+
+.keywords-list li {
+    cursor: pointer;
+}
