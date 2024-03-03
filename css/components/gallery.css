@@ -1,8 +1,12 @@
 .gallery img {
     height: 300px;
+    margin: 3px;
+}
+
+.gallery img:hover {
+    scale: 1.05;
 }
 
 .main-content {
     margin-block-end: 20px;
-    flex-grow: 1;
 }
