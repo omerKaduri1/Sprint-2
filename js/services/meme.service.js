@@ -1,6 +1,6 @@
 'use strict'
 
-const MEME_DB = 'memeDB'
+const KEYWORDS_DB = 'keywordsDB'
 var gElCanvas = document.querySelector('canvas')
 var gImgs
 var gCenter = gElCanvas.width / 2
@@ -8,10 +8,10 @@ var gY = 20
 var gId = 1
 var gMeme
 var gFilterBy = ''
+var gKeywordSearchCountMap = loadFromStorage(KEYWORDS_DB)|| { 'funny': 3, 'cat': 0, 'baby': 2, 'animal': 5, 'serious': 0, 'dog': 1 }
 
 _createImgs()
 
-var gKeywordSearchCountMap = { 'funny': 3, 'cat': 0, 'baby': 2, 'animal': 5, 'serious': 0, 'dog':1 }
 
 function createMeme() {
     gMeme = {
@@ -37,31 +37,34 @@ function getKeywords() {
     return gKeywordSearchCountMap
 }
 
-// function getCurrLine() {
-//     return gMeme.lines[gMeme.selectedLineIdx]
-// }
+function getLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
 
 function setLineTxt(newTxt) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = newTxt
+    const line = getLine()
+    line.txt = newTxt
 }
 
 function deleteLine() {
-    gMeme.lines[gMeme.selectedLineIdx].txt = ''
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     gMeme.selectedLineIdx = 0
 }
 
 function setTxtColor(newColor) {
-    gMeme.lines[gMeme.selectedLineIdx].color = newColor
+    const line = getLine()
+    line.color = newColor
 }
 
 function setFillTxtColor(newColor) {
-    gMeme.lines[gMeme.selectedLineIdx].fillColor = newColor
+    const line = getLine()
+    line.fillColor = newColor
 }
 
 function setTxtSize(operator) {
-    if (operator === '+') gMeme.lines[gMeme.selectedLineIdx].size++
-    if (operator === '-') gMeme.lines[gMeme.selectedLineIdx].size--
+    const line = getLine()
+    if (operator === '+' && line.size < 40) line.size++
+    if (operator === '-' && line.size > 10) line.size--
 }
 
 function setFont(font) {
@@ -69,7 +72,8 @@ function setFont(font) {
 }
 
 function alignTxt(alignment) {
-    gMeme.lines[gMeme.selectedLineIdx].txtAlign = alignment
+    const line = getLine()
+    line.txtAlign = alignment
 }
 
 function addLine() {
@@ -99,7 +103,8 @@ function findClickedLine(offsetX, offsetY) {
 }
 
 function setLineDrag(isDrag) {
-    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+    const line = getLine()
+    line.isDrag = isDrag
 }
 
 function setImgFromGallery(isImgFromGallery) {
@@ -107,8 +112,9 @@ function setImgFromGallery(isImgFromGallery) {
 }
 
 function moveLine(dx, dy) {
-    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
-    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
+    const line = getLine()
+    line.pos.x += dx
+    line.pos.y += dy
 }
 
 function setImg(imgId) {
@@ -117,6 +123,19 @@ function setImg(imgId) {
 
 function setFilterBy(filterBy) {
     gFilterBy = filterBy.toLowerCase()
+    updateKeywordsMap(filterBy)
+}
+
+function updateKeywordsMap(keyword) {
+    console.log(keyword);
+    if (gKeywordSearchCountMap[keyword] >= 20) return
+    if (gKeywordSearchCountMap[keyword]) gKeywordSearchCountMap[keyword]++
+    else {
+        gKeywordSearchCountMap[keyword] = 0
+        gKeywordSearchCountMap[keyword]++
+    }
+
+    saveToStorage(KEYWORDS_DB, gKeywordSearchCountMap)
 }
 
 function _filterImgs() {

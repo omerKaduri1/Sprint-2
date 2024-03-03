@@ -51,7 +51,9 @@ function onImgSelect(imgId) {
 }
 
 function onSetFilter(filter) {
+    // updateKeywordsMap(filter)
     setFilterBy(filter)
+    renderKeywordsList()
     renderGallery()
 }
 
@@ -59,6 +61,7 @@ function onKeywordSearch(keyword){
     const elSearchInput = document.querySelector('input.filter')
     elSearchInput.value = keyword
     setFilterBy(keyword)
+    renderKeywordsList()
     renderGallery()
 }
 
