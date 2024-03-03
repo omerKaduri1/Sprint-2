@@ -24,7 +24,7 @@ function renderKeywordsList() {
     let strHTML = ''
     for (const keyword in keywords) {
         const wordSize = !keywords[keyword] ? 15 : keywords[keyword] + 15
-        strHTML += `<li style="font-size: ${wordSize}px">${keyword}</li>`
+        strHTML += `<li onclick="onKeywordSearch(this.id)" id="${keyword}" style="font-size: ${wordSize}px">${keyword}</li>`
     }
 
     const elKeywordsList = document.querySelector('.keywords-list')
@@ -52,6 +52,11 @@ function onImgSelect(imgId) {
 
 function onSetFilter(filter) {
     setFilterBy(filter)
+    renderGallery()
+}
+
+function onKeywordSearch(keyword){
+    setFilterBy(keyword)
     renderGallery()
 }
 

@@ -1,0 +1,13 @@
+.gallery-header {
+    background-color: var(--primary-1);
+    margin-block-end: 20px;
+}
+
+input.filter {
+    border: none;
+    border-block-end: solid 1px black;
+}
+
+.keywords-list {
+    gap: 10px;
+}

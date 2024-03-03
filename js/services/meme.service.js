@@ -11,7 +11,7 @@ var gFilterBy = ''
 
 _createImgs()
 
-var gKeywordSearchCountMap = { 'funny': 3, 'cat': 0, 'baby': 2 }
+var gKeywordSearchCountMap = { 'funny': 3, 'cat': 0, 'baby': 2, 'animal': 5, 'serious': 0, 'dog':1 }
 
 function createMeme() {
     gMeme = {
