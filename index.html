@@ -9,6 +9,8 @@
 </head>
 
 <body onload="onInit()">
+    <div class="main-screen" onclick="closeMenu()"></div>
+
     <header class="main-header main-layout">
         <div class="logo">
             <img src="logo/LOGO.png" alt="site-logo">
@@ -73,16 +75,17 @@
                                 <option value="Times New Roman">Times New Roman</option>
                             </select>
                             <button class="color-btn">
-                                <label for="color" id="color">
+                                <label for="color">
                                     <img src="icons/text stroke.png">
-                                    <input oninput="onColorChange(this.value)" type="color" name="color" id="color">
                                 </label>
+                                    <input oninput="onColorChange(this.value)" type="color" name="color" id="color">
                             </button>
                             <button class="fill-color-btn">
-                                <label for="fill-color" id="fill-color">
+                                <label for="fill-color">
                                     <img src="icons/paint-board-and-brush.png">
-                                    <input oninput="onFillColorChange(this.value)" type="color" name="fill-color" id="fill-color">
                                 </label>
+                                <input oninput="onFillColorChange(this.value)" type="color" name="fill-color"
+                                    id="fill-color">
                             </button>
                         </div>
                     </div>

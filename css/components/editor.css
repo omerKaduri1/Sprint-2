@@ -57,6 +57,21 @@ input.txt-edit {
     border-radius: 10px;
 }
 
+#color,
+#fill-color {
+    visibility: hidden;
+}
+
+label {
+    display: block;
+    height: 60px;
+    width: 60px;
+}
+
+label:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
 .btn {
     background-color: var(--primary-base);
     height: 50px;
