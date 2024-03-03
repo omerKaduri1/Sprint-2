@@ -29,17 +29,18 @@ function renderMeme() {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     meme.lines.forEach((line, idx) => {
         const meme = getMeme()
-        const { txt, size, color, pos, txtAlign } = line
-        drawText(txt, size, color, pos.y, pos.x, txtAlign, meme.font)
+        const { txt, size, color, fillColor, pos, txtAlign } = line
+        drawText(txt, size, color, fillColor, pos.y, pos.x, txtAlign, meme.font)
         let txtWidth = gCtx.measureText(line.txt).width
         line.txtWidth = txtWidth
         if (meme.selectedLineIdx === idx) drawFrame(pos.x, pos.y, size, txtWidth)
     })
 }
 
-function drawText(text, size, color = 'black', y, x, textAlign, font) {
+function drawText(text, size, color, fillColor, y, x, textAlign, font) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = color
+    gCtx.fillStyle = fillColor
 
     gCtx.font = `${size}px ${font}`
     gCtx.textAlign = textAlign
@@ -70,6 +71,11 @@ function onAlignTxt(alignment) {
 
 function onColorChange(newColor) {
     setTxtColor(newColor)
+    renderMeme()
+}
+
+function onFillColorChange(newColor) {
+    setFillTxtColor(newColor)
     renderMeme()
 }
 

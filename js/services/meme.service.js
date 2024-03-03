@@ -42,6 +42,10 @@ function setTxtColor(newColor) {
     gMeme.lines[gMeme.selectedLineIdx].color = newColor
 }
 
+function setFillTxtColor(newColor) {
+    gMeme.lines[gMeme.selectedLineIdx].fillColor = newColor
+}
+
 function setTxtSize(operator) {
     if (operator === '+') gMeme.lines[gMeme.selectedLineIdx].size++
     if (operator === '-') gMeme.lines[gMeme.selectedLineIdx].size--
