@@ -24,9 +24,3 @@ a {
 button {
     cursor: pointer;
 }
-
-.main-layout{
-    width: 100%;
-    padding-inline: 200px;
-    margin: 0 auto;
-}
