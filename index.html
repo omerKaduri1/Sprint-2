@@ -26,7 +26,6 @@
         <section class="gallery">
         </section>
 
-
         <section class="editor flex">
             <div class="canvas-container">
                 <canvas height="450" width="450"></canvas>
@@ -46,44 +45,47 @@
                         </button>
                     </div>
 
-
                     <div class="advanced-editor">
-                        <button onclick="onTxtSizeChange(this.value)" value="+">
-                            <img src="icons/increase font - icon.png">
-                        </button>
-                        <button onclick="onTxtSizeChange(this.value)" value="-">
-                            <img src="icons/decrease font - icon.png">
-                        </button>
-                        <button onclick="onAlignTxt(this.value)" value="right">
-                            <img src="icons/align-to-left.png">
-                        </button>
-                        <button onclick="onAlignTxt(this.value)" value="center">
-                            <img src="icons/center-text-alignment.png">
-                        </button>
-                        <button onclick="onAlignTxt(this.value)" value="left">
-                            <img src="icons/align-to-right.png">
-                        </button>
+                        <div>
+                            <button onclick="onTxtSizeChange(this.value)" value="+">
+                                <img src="icons/increase font - icon.png">
+                            </button>
+                            <button onclick="onTxtSizeChange(this.value)" value="-">
+                                <img src="icons/decrease font - icon.png">
+                            </button>
+                            <button onclick="onAlignTxt(this.value)" value="right">
+                                <img src="icons/align-to-left.png">
+                            </button>
+                            <button onclick="onAlignTxt(this.value)" value="center">
+                                <img src="icons/center-text-alignment.png">
+                            </button>
+                            <button onclick="onAlignTxt(this.value)" value="left">
+                                <img src="icons/align-to-right.png">
+                            </button>
+                        </div>
                         <div class="inner-container">
-                            <select oninput="onSetFont(this.value)" class="font-family" name="font-family" id="font-family">
+                            <select oninput="onSetFont(this.value)" class="font-family" name="font-family"
+                                id="font-family">
                                 <option value="Impact">Impact</option>
                                 <option value="Arial">Arial</option>
                                 <option value="monospace">Monospace</option>
                                 <option value="Verdana">Verdana</option>
                                 <option value="Times New Roman">Times New Roman</option>
                             </select>
-                        <button class="color-btn">
-                            <label for="color" id="color">
-                                <img src="icons/text stroke.png">
-                                <input oninput="onColorChange(this.value)" type="color" name="color" id="color">
-                            </label>
-                        </button>
-                    </div>
+                            <button class="color-btn">
+                                <label for="color" id="color">
+                                    <img src="icons/text stroke.png">
+                                    <input oninput="onColorChange(this.value)" type="color" name="color" id="color">
+                                </label>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="actions">
                     <button class="btn"><a href="#" onclick="downloadMeme(this)"
                             download="file-name">Download</a></button>
-                    <button class="btn facebook-btn" onclick="onUploadImg()"><img src="icons/facebook-logo.png"></button>
+                    <button class="btn facebook-btn" onclick="onUploadImg()"><img
+                            src="icons/facebook-logo.png"></button>
                     <button onclick="shareCanvas()" class="btn share-btn">Share</button>
                     <button class="btn save-btn" onclick="onSaveMeme()">Save</button>
                 </div>

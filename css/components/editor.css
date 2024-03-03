@@ -21,6 +21,7 @@ input.txt-edit {
 
 .advanced-editor {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 5px;
     justify-content: center

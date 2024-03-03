@@ -24,6 +24,7 @@ function onImgSelect(imgId) {
     elMain.classList.add('editor')
     elGallery.style.display = 'none'
     gElEditor.style.display = 'flex'
+    createMeme()
     setImg(imgId)
     renderMeme()
 }

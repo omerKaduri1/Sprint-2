@@ -6,16 +6,20 @@ var gImgs
 var gCenter = gElCanvas.width / 2
 var gY = 20
 var gId = 1
-var gMeme = {
-    selectedImgId: 0,
-    selectedLineIdx: 0,
-    font: 'Impact',
-    lines: [
-        _createLine(),
-    ]
-}
+var gMeme
 
 _createImgs()
+
+function createMeme() {
+    gMeme = {
+        selectedImgId: 0,
+        selectedLineIdx: 0,
+        font: 'Impact',
+        lines: [
+            _createLine(),
+        ]
+    }
+}
 
 function getMeme() {
     return gMeme
@@ -106,6 +110,7 @@ function _createLine(y = gY + 30) {
         txt: 'Enter Text',
         size: 20,
         color: 'black',
+        fillColor: 'white',
         txtAlign: 'center',
         isDrag: false
     }
