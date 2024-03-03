@@ -1,10 +1,12 @@
 .gallery-header {
     background-color: var(--primary-1);
     margin-block-end: 20px;
+    justify-content: center;
+    gap: 15px;
 }
 
 .filter-container {
-    padding-block-start: 20px;
+    padding-block: 15px 7px;
 }
 
 input.filter {
@@ -20,7 +22,14 @@ input.filter {
     cursor: pointer;
 }
 
-.clear-btn {
+.clear-btn, .random-btn {
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
+    padding-block: 5px;
+}
+
+.random-btn {
+    margin-block: 5px;
+    max-width: max-content;
+    align-self: center;
 }

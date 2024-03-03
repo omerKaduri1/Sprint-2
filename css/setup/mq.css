@@ -1,4 +1,8 @@
-@media (max-width: 790px) {
+@media (max-width: 740px) {
+
+    body {
+        overflow-x: hidden;
+    }
 
     .main-nav {
         position: fixed;
@@ -47,6 +51,19 @@
         position: absolute;
         right: 0;
         display: none;
+    }
+
+    .gallery-header {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .gallery-header ul {
+        justify-content: center;
+    }
+
+    .main-layout {
+        padding-inline: 0;
     }
 
     .editor {
