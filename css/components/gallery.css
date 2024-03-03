@@ -4,4 +4,5 @@
 
 .main-content {
     margin-block-end: 20px;
+    flex-grow: 1;
 }

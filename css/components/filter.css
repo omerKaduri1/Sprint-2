@@ -3,6 +3,10 @@
     margin-block-end: 20px;
 }
 
+.filter-container {
+    padding-block-start: 20px;
+}
+
 input.filter {
     border: none;
     border-block-end: solid 1px black;
@@ -14,4 +18,9 @@ input.filter {
 
 .keywords-list li {
     cursor: pointer;
+}
+
+.clear-btn {
+    border: none;
+    border-radius: 10px;
 }

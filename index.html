@@ -24,21 +24,22 @@
         <button class="close-menu-btn" onclick="closeMenu()" type="button">X</button>
     </header>
 
-    <main class="main-content main-layout">
+    <main class="main-content">
         <section class="gallery">
-            <header class="gallery-header flex space-between">
+            <header class="gallery-header  main-layout flex space-between">
                 <div class="filter-container">
-                    <input type="text" name="filter" list="keywords" class="filter" oninput="onSetFilter(this.value)"/>
+                    <input type="text" name="filter" list="keywords" class="filter" placeholder="Enter search keyword" oninput="onSetFilter(this.value)"/>
+                    <!-- <button class="search-btn"><img src="icons/search-icon.png"></button> -->
 
                     <datalist id="keywords">
                     </datalist>
 
-                    <button onclick="onClearFilter()" class="btn clear-ctn">Clear</button>
+                    <button onclick="onClearFilter()" class="clear-btn">Clear</button>
                 </div>
                 <ul class="keywords-list clean-list flex">
                 </ul>
             </header>
-            <section class="gallery-img-container"></section>
+            <section class="gallery-img-container  main-layout"></section>
         </section>
 
         <section class="editor flex">
@@ -109,7 +110,6 @@
                     <button class="btn facebook-btn" onclick="onUploadImg()"><img
                             src="icons/facebook-logo.png"></button>
                     <button onclick="shareCanvas()" class="btn share-btn">Share</button>
-                    <button class="btn save-btn" onclick="onSaveMeme()">Save</button>
                 </div>
             </div>
         </section>

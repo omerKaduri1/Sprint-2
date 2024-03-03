@@ -1,17 +1,19 @@
 .main-header {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: minmax(50px, 1fr)
-    minmax(auto, 1100px)
-    minmax(50px, 1fr);
-    color: var(--primary-1);
-    background-color: var(--primary-base);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--primary-base);
     height: 70px;
 }
 
-.logo img{
+.logo img {
     width: 8.125rem;
+}
+
+.logo {
+    margin-inline-start: 20px;
     justify-self: center;
+    align-self: center;
 }
 
 .main-nav-list {
@@ -22,8 +24,4 @@
     color: var(--primary-1);
     font-size: 1.5em;
     padding-inline-end: 5px;
-}
-
-.main-nav-list a:first-child {
-    border-inline-end: solid 1px var(--primary-1);
 }
