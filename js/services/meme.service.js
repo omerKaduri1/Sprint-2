@@ -118,10 +118,6 @@ function setLineDrag(isDrag) {
     line.isDrag = isDrag
 }
 
-function setImgFromGallery(isImgFromGallery) {
-    gMeme.isImgFromGallery = isImgFromGallery
-}
-
 function moveLine(dx, dy) {
     const line = getLine()
     line.pos.x += dx
